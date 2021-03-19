@@ -1,0 +1,7 @@
+*.log
+/vendor/
+node_modules
+bower_components
+.DS_Store
+/.phpunit.result.cache
+/coverage
