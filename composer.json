@@ -1,12 +1,13 @@
 {
-    "name": "silvanus/projectname",
-    "description": "PROJECT_DESCRIPTION.",
+    "name": "silvanus/collection",
+    "description": "Typed collection-like arrays for PHP.",
     "type": "library",
     "require": {},
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
         "phpunit/phpunit": "^9",
-        "vimeo/psalm": "^4.4"
+        "vimeo/psalm": "^4.4",
+        "infection/infection": "^0.18.2"
     },
     "license": "MIT",
     "authors": [
@@ -18,13 +19,16 @@
     ],
     "autoload": {
       "psr-4": {
-        "Silvanus\\ProjectName\\": "src/",
-        "Silvanus\\ProjectName\\Tests\\": "tests/"
+        "Silvanus\\Collection\\": "src/",
+        "Silvanus\\Collection\\Tests\\": "tests/"
       }
     },
     "scripts": {
-      "test": [
+      "test:unit": [
         "phpunit --testdox"
+      ],
+      "test:mutation": [
+        "infection --threads=4 --min-covered-msi=100"
       ],
       "psalm": [
         "psalm"

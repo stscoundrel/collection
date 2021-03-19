@@ -5,7 +5,7 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="ProjectName">
+        <testsuite name="Collection">
             <directory>./tests</directory>
         </testsuite>        
     </testsuites>

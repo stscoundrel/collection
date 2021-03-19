@@ -1,4 +1,4 @@
-name: Lint
+name: Mutation tests
 
 on: [pull_request, push]
 
@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Lint PHP
+    - name: Mutation Test PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
@@ -24,4 +24,4 @@ jobs:
         coverage: xdebug        
         tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}, composer:v1
     - run: composer install
-    - run: composer lint
+    - run: composer test:mutation
