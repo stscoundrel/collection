@@ -1,6 +1,6 @@
 name: Unit tests
 
-on: [pull_request]
+on: [pull_request, push]
 
 jobs:
   run:
@@ -24,4 +24,4 @@ jobs:
         coverage: xdebug        
         tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}, composer:v1
     - run: composer install
-    - run: composer test
+    - run: composer test:unit
