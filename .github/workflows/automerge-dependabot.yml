@@ -1,6 +1,6 @@
 name: Auto-merge Dependabot
 
-on: [pull_request, push]
+on: [pull_request]
 
 jobs:
   auto-merge:
