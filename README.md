@@ -54,10 +54,28 @@ use Acme\App\DummyEntity;
 $collection = new DummyCollection();
 
 // All good.
-$collection[] = new DuDummyEntity(1);
+$collection[] = new DummyEntity(1);
 $collection[] = new DummyEntity(2);
 
 // Exception thrown
 $collection[] = new DateTime();
+
+```
+
+You can also turn an array into a colelciton.
+
+```php
+<?php
+
+// Your collection
+use Acme\App\DummyCollection;
+
+// Your object.
+use Acme\App\DummyEntity;
+
+$array = array( new DummyEntity(1), new DummyEntity(2), new DummyEntity(3) );
+
+// Will throw exceptions if incorrect types in array.
+$collection = new DummyCollection( $array );
 
 ```
