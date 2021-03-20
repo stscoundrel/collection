@@ -16,6 +16,21 @@ use \ArrayObject;
 abstract class AbstractCollection extends ArrayObject
 {
 
+    /**
+     * Run type checks before parent constructor,
+     *
+     * @param array $input
+     */
+    public function __construct($input = array())
+    {
+        /** @var object */
+        foreach ($input as $value) :
+            $this->checkValueIsValid($value);
+        endforeach;
+
+        parent::__construct($input);
+    }
+
     abstract protected function getType() : string;
 
     /**
@@ -38,6 +53,18 @@ abstract class AbstractCollection extends ArrayObject
      */
     public function offsetSet($index, $value)
     {
+        $this->checkValueIsValid($value);
+        parent::offsetSet($index, $value);
+    }
+
+    /**
+     * Ensure given value is usable in collection.
+     *
+     * @param mixed $value
+     * @return void
+     */
+    private function checkValueIsValid($value)
+    {
         if (! is_object($value)) :
             throw new NotAnObjectException();
         endif;
@@ -45,7 +72,5 @@ abstract class AbstractCollection extends ArrayObject
         if (! $this->matchesType($value)) :
             throw new IncorrectTypeException();
         endif;
-
-        parent::offsetSet($index, $value);
     }
 }
