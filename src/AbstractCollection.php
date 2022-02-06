@@ -51,7 +51,7 @@ abstract class AbstractCollection extends ArrayObject
      * @param mixed $value
      * @return void
      */
-    public function offsetSet($index, $value)
+    public function offsetSet($index, $value) : void
     {
         $this->checkValueIsValid($value);
         parent::offsetSet($index, $value);
@@ -63,7 +63,7 @@ abstract class AbstractCollection extends ArrayObject
      * @param mixed $value
      * @return void
      */
-    private function checkValueIsValid($value)
+    private function checkValueIsValid($value) : void
     {
         if (! is_object($value)) :
             throw new NotAnObjectException();
