@@ -62,7 +62,7 @@ $collection[] = new DateTime();
 
 ```
 
-You can also turn an array into a colelciton.
+You can also turn an array into a collection.
 
 ```php
 <?php
